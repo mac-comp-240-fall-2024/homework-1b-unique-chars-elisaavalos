@@ -1,5 +1,9 @@
 /*
- * TODO: Add an appropriate descriptive comment here
+ * hasUniqueChars.c
+ * 
+ * Contains a variety of string tests for the function in hasUniqueChars.c
+ * 
+ * Author: Elisa Avalos
  */
 
 #include <stdio.h>    // printf
@@ -38,7 +42,7 @@ int main() {
   // Thorough and exhaustive tests of hasUniqueChars()  
   bool ok;    // holds the result of hasUniqueChars(); used in asserts
   
-  // Test 1: a test case that should return false because characters are duplicated
+  // Test 1: a test case that should return false because letter characters are duplicated
   strcpy(string3, "This should fail (l and s and i and h)");
   ok = hasUniqueChars(string3);
   assert(!(ok));
@@ -49,8 +53,41 @@ int main() {
   ok = hasUniqueChars(string3);
   assert(ok);
   
-  // TODO: add your tests here
+  
+  // Test 3: a test case that should return false because nonletter characters are duplicated
+  strcpy(string3, "hello??");
+  ok = hasUniqueChars(string3);
+  assert(!(ok));
+  
+  // Test 4: a test case that should return false because nonletter characters are duplicated
+  strcpy(string3, "aaaaaaaaaaaaaaaaaaaaaaaah");
+  ok = hasUniqueChars(string3);
+  assert(!(ok));
 
+  // Test 5: a test case that should return true even though there are multiple space characters
+  strcpy(string3, "yo, what is up?");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+
+  // Test 6: a test case that should return true because there is no duplicate characters
+  strcpy(string3, "okay");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+
+  // Test 7: a test case that should return true because there is no duplicate characters (edge cases)
+  strcpy(string3, "A~");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+
+  // Test 6: a test case that should return true because there is no duplicate characters (edge cases)
+  strcpy(string3, "!@");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+  
+
+  // Test 7: a test case that makes sure checkInvalid raises an error due to non-printing characters (escape character)
+  strcpy(string3, "\e");
+  ok = hasUniqueChars(string3);
 
 
   // NOTE: if you add a \n to any tests, this should cause the
